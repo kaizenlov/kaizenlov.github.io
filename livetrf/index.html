@@ -407,7 +407,7 @@ async function loadSlot(si, ci) {
     // Last-Modified tells us exactly when the camera image was captured —
     // much more accurate than our request time
     const lastMod = res.headers.get('last-modified');
-    const imageTime = lastMod ? new Date(lastMod).getTime() : Date.now();
+    const imageTime = (lastMod ? new Date(lastMod).getTime() : Date.now()) - 1000;
 
     const blob = await res.blob();
     const blobUrl = URL.createObjectURL(blob);
